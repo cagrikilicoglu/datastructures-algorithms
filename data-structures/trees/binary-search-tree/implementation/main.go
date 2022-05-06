@@ -11,7 +11,7 @@ type Node struct {
 	left  *Node
 }
 
-type NodeShow struct {
+type NodeDeref struct {
 	value int
 	right Node
 	left  Node
@@ -23,6 +23,22 @@ func newBinarySearchTree() *BinarySearchTree {
 func createNode(value int) *Node {
 	return &Node{value: value}
 }
+
+// func showNode(node Node) NodeDeref {
+// 	var nodeDeref NodeDeref
+// 	if node.right != nil && node.left != nil {
+// 		nodeDeref = NodeDeref{value: node.value, right: *node.right, left: *node.left}
+// 	} else if node.right != nil && node.left == nil {
+// 		nodeDeref = NodeDeref{value: node.value, right: *node.right}
+// 	} else if node.left != nil && node.right == nil {
+// 		nodeDeref = NodeDeref{value: node.value, left: *node.left}
+// 	} else {
+// 		nodeDeref = NodeDeref{value: node.value}
+// 	}
+
+// 	return nodeDeref
+
+// }
 
 func main() {
 	myBinarySearchTree := newBinarySearchTree()
@@ -46,6 +62,8 @@ func main() {
 	fmt.Println(myBinarySearchTree.lookup(170))
 	fmt.Println(myBinarySearchTree.lookup(15))
 	fmt.Println(myBinarySearchTree.lookup(1))
+
+	// fmt.Println(preOrderTraverse(*myBinarySearchTree.root))
 
 }
 
@@ -134,3 +152,11 @@ func (b *BinarySearchTree) remove(value int) {
 	return
 
 }
+
+// func preOrderTraverse(node Node) []int {
+// 	values = append(values, node.value)
+// 	if node.left != nil {
+// 		values = append(values, node.left.preOrderTraverse())
+// 	}
+// 	return values
+// }
